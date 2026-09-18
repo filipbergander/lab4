@@ -36,7 +36,7 @@ namespace PassengerInput
             while (programRunning)
             {
                 Write("Ange kön, man eller kvinna: ");
-                string? sex = ReadLine().Trim().ToLower();
+                string sex = (ReadLine() ?? string.Empty).Trim().ToLowerInvariant();
 
                 if (sex == "man")
                 {
