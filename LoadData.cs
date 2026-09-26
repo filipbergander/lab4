@@ -37,16 +37,27 @@ namespace Passenger
                 Environment.Exit(1);
             }
 
-            // Skriver ut antal passagerare totalt samt de första 5 raderna i datamängden
-
+            // Skriver ut antal passagerare totalt samt överlevande eller inte
+            int survived = passengers.Count(p => p.Survived);
+            int notSurvived = passengers.Count(p => !p.Survived);
+            double survivalRate = (double)survived / passengers.Count;
             WriteLine($"Antal passagerare: {passengers.Count}");
+            WriteLine($"Överlevande: {survived}");
+            WriteLine($"Omkomna: {notSurvived}");
+            WriteLine($"Chans för överlevnad: {survivalRate:P1}\n");
+            // Första raderna från datafilen
             var preview = data.Preview(maxRows: 5);
             WriteLine($"De första 5 raderna i datamängden:");
+            foreach (var column in data.Schema)
+            {
+                Write($"{column.Name.PadRight(10)}");
+            }
+            WriteLine();
             foreach (var row in preview.RowView)
             {
                 foreach (var column in row.Values)
                 {
-                    Write($"{column.Key}: {column.Value}\t");
+                     Write($"{column.Value?.ToString()!.PadRight(10)}");
                 }
                 WriteLine();
             }

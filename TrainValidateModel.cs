@@ -32,7 +32,7 @@ namespace Passenger
             double avgAuc = cvResults.Average(res => res.Metrics.AreaUnderRocCurve);
 
             // Utskrift
-            WriteLine("Resultat från 5-faldig korsvalidering: ");
+            WriteLine("Resultat från 5-faldig korsvalidering");
             WriteLine($"Medelprecision: {avgAccuracy:P2}");
             WriteLine($"Medel AUC: {avgAuc:P2}\n");
         }
@@ -55,10 +55,10 @@ namespace Passenger
                 labelColumnName: nameof(PassengerData.Survived)
             );
             // Utskrift av träning & test utvärderingen
-            WriteLine("\n80/20 utvärderingen:");
+            WriteLine("80/20 utvärderingen");
             WriteLine($"Precision: {testMetrics.Accuracy:P2}");
             WriteLine($"AUC: {testMetrics.AreaUnderRocCurve:P2}");
-            WriteLine($"F1-score: {testMetrics.F1Score:P2}");
+            WriteLine($"F1-score: {testMetrics.F1Score:P2}\n");
             WriteLine(testMetrics.ConfusionMatrix.GetFormattedConfusionTable());
 
             return modelTraining;
