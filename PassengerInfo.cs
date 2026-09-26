@@ -7,6 +7,7 @@ using Microsoft.ML.Data;
 namespace PassengerSchema
 {
     // Data med typer över varje passagerare
+    // Loadcolumn anger vilket index i csv-filen som kolumnen ska härledas till
     public class PassengerData
     {
         [LoadColumn(1)]
